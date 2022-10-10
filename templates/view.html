@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			.arrow_back {
+				width:60px;
+				padding-left:25px;
+				padding-top: 25px;
+			}
+			.tableBig{width: 100%;}
+			.th{padding-right: 10px;}
+			a {
+		border-bottom:0px solid #000;
+		text-decoration:none;
+		}
+		a:visited {
+		border-bottom-color:rgba(255,255,255,0);
+		}
+		a:hover{
+			border-bottom-color:rgba(255,255,255,0);
+		}
+		#btndlt {text-decoration: none;}
+		
+		#btndlt:visited
+		{
+		text-decoration: none !important;
+		}
+			
+		td{
+			color :#000000 !important;
+			font-size: 30px !important;
+			font-weight: 600 !important;
+		}
+		
+		</style>
+		<title>Rosemary - View Reservations</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
+		<link rel="icon" type="image/jpg" href="{{url_for('static', filename='images/r.png')}}">
+	</head>
+	<body>
+		<!-- -------------------------------------------BODY-BELOW--------------------------------------------------------------------->
+		<a href="/"><div><img class="arrow_back" src="static/images/arrow_back.png"></div></a>
+		<center>
+		<img class="logo_upload" src="static/images/logorosemary4.png">
+		</center>
+		<table class="tableBig">
+			{%for Reservation in Reservations%}
+			<tr>
+				<th>Reservation Name</th>
+				<th>Full Name</th>
+				<th>Reserve Time</th>
+				<th>Reserve Date</th>
+				<th>Number Of People</th>
+				<th>Location</th>
+				<th>Phone Number</th>
+				<th>Waiter Name</th>
+				<th>Is Eating?</th>
+				<th>Closed Menu?</th>
+				<th>Is Coming?</th>
+				<th>Notes</th>
+				<th>Options</th>
+			</tr>
+			<tr>
+				<td>{{Reservation['reserve_name']}}</td>
+				<td>{{Reservation['full_name']}}</td>
+				<td>{{Reservation['reserve_time']}}</td>
+				<td>{{Reservation['reserve_day']}}</td>
+				<td>{{Reservation['num_people']}}</td>
+				<td>{{Reservation['location']}}</td>
+				<td>{{Reservation['phone_num']}}</td>
+				<td>{{Reservation['waiter_name']}}</td>
+				<td>{{Reservation['is_food']}}</td>
+				<td>{{Reservation['closed_menu']}}</td>
+				<td><input type="checkbox" id="isComingBox" name="{{Reservation['id']}}" value="{{Reservation['id']}}"> <label for="isComingBox">Coming?</label></td>
+				<td class="notesTh">{{Reservation['notes']}}</td>
+				<td><form method="post"><button id="btndlt" value="{{Reservation.id}}" class="button-6" name="deleteBtn" type="submit"></form><p class="btnTxt">Delete</p></button>
+				<!-- 				<a href="/edit"><button id="btnedit" class="button-6" name="editBtn" type="submit"><p class="btnTxt">Edit</p></button></a></td>
+			-->			</tr>
+			{%endfor%}
+		</table>
+	</section>
+</div>
+<!-- Scripts -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/skel.min.js"></script>
+<script src="static/js/util.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>

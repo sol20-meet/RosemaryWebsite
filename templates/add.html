@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<!--
+	Epilogue by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<style>
+			.arrow_back {
+				width:60px;
+				padding-left:25px;
+				padding-top: 25px;
+			}
+			.arrowback_link:visited {
+				
+				text-decoration: none;
+			}
+			#arrow_back_div
+			{
+				width:60px;
+			}
+			form {color :#000000 !important;
+			font-size: 30px !important;
+			font-weight: 600 !important;}
+
+			* {color :#000000 !important;
+			font-size: 30px !important;
+			font-weight: 600 !important;}
+			
+			
+		</style>
+		<title>Rosemary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
+		<link rel="icon" type="image/jpg" href="{{url_for('static', filename='images/r.png')}}">
+	</head>
+	<script type="text/javascript">
+		
+		const nameOfplace = document.getElementById('nameOfplace');
+		const desc = document.getElementById('subject');
+		const form  = document.getElementsByTagName('makePlace')[0];
+		form.addEventListener('submit', function (event) {
+			// if the nameOfPlace field is missing the form wont submit
+			if(nameOfplace.validity.tooShort) {
+			nameOfplaceError.textContent = `The place's name should be at least ${ nameOfplace.minLength } characters long`
+			event.preventDefault();
+			}
+			else if(desc.validity.tooShort){
+				descError.textContent = `Description should be at least ${ desc.minLength } characters; you entered ${ desc.value.length }.`
+				event.preventDefault();
+			}
+		});
+	</script>
+	
+	<body id="imp">
+		<a href="/" class="arrowback_link"><div id="arrow_back_div"><img class="arrow_back" src="static/images/arrow_back.png"></div></a>
+		
+		<center>
+		<img class="logo_upload" src="static/images/logorosemary4.png">
+		</center>
+		
+		<!-- Wrapper -->
+		<div id="wrapper">
+			<div class="upload_items">
+				<!-- Banner -->
+				<section id="intro" class="main">
+					<br>
+					<form action="" method="POST" name="makePlace">
+						Reservation Name :
+						<input type="text" placeholder="Reservation's Name" name="reserveName" required minlength="1">
+						<br>
+						Full Name :
+						<input type="text" placeholder="Full Name" name="fullName">
+						<br>
+						Reserve Time :
+						<select name="comp_select1">
+						{% for o in data1 %}
+							<option value="{{ o.time }}">{{ o.time }}</option>
+						{% endfor %}
+						</select>
+						<br>
+						Reserve Day :
+						<input type="date" id="birthday" name="reserveDay">
+						<br>
+						<br>
+						Number Of People :
+						<select name="comp_select3">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="10+">10+</option>
+						</select>
+						<br>
+						Location :
+						<select name="comp_select2">
+							<option value="Inside">Inside</option>
+							<option value="Outside">Outside</option>
+						</select>
+						<br>
+						Phone Number :
+						<input type="text" placeholder="Phone Number" name="phoneNum">
+						<br>
+						Waiter Name :
+						<select name="comp_select">
+							{% for o in data %}
+								<option value="{{ o.name }}">{{ o.name }}</option>
+							{% endfor %}
+						</select>
+						<br>
+						Is Eating Food? :
+						<input type="radio" id="eatingF1" name="isEating" value="Yes" checked="checked">
+						<label for="eatingF1">Yes</label>
+						<input type="radio" id="eatingF2" name="isEating" value="No">
+						<label for="eatingF2">No</label><br><br>
+						Closed Menu? :
+						<input type="radio" id="closedM1" name="closedMenu" value="Yes" >
+						<label for="closedM1">Yes</label>
+						<input type="radio" id="closedM2" name="closedMenu" value="No" checked="checked">
+						<label for="closedM2">No</label><br>
+						<br>
+						Notes :
+						<input type="text" placeholder="Any extra notes?" name="notes">
+						<br>
+						<ul class="actions">
+							<input type="Submit" name="Submit" class="button big">
+						</ul>
+					</form>
+				</section>
+			</div>
+			
+			
+			
+		</div>
+		<!-- Scripts -->
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/skel.min.js"></script>
+		<script src="static/js/util.js"></script>
+		<script src="static/js/main.js"></script>
+	</body>
+</html>
