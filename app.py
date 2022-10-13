@@ -1,14 +1,16 @@
-from database import *
-from flask import Flask, request, redirect, render_template
+# from database import *
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import session as login_session
-from model import *
+import pyrebase
+import random
+import os
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
 @app.route('/')
 def home():
-	a=query_all()
-	return render_template('index.html', reservations=a)
+	return render_template('index.html')
 
 @app.route('/add' , methods=['GET','POST'])
 def add():
@@ -28,15 +30,20 @@ def add():
 		closedMenu = request.form['closedMenu']
 		notes = request.form['notes']
 
-		add_res(reserveName,fullName,reserveTime,reserveDay,numOfpeople,location,phone_num,waiterName,None,isEating,closedMenu,notes)
+		# Make Object here and send it to the firebase database
+
+
 		print("Done!")
 		return redirect('/')
+
+
+
+
 
 @app.route('/view' , methods=['GET' , 'POST'])
 def view():
 	if request.method == 'GET':
-		a = query_res()
-		return render_template('view.html' , Reservations = a)
+		return render_template('view.html')
 	else:
 		objId = request.form['deleteBtn']
 		print(objId)
@@ -49,25 +56,6 @@ def view():
 		session.commit()
 		return redirect('/')
 
-
-
-# @app.route('/view/<int:res_id>' , methods=['GET' , 'POST'])
-# def view1():
-# 	if request.method == 'GET':
-# 		reservation = session.query(Reservation).filter(Reservation.id == res_id).first()
-# 		reservation.isComing = True
-# 		session.commit()
-# 		return redirect('/view')
-# 	else:
-# 		redirect('/add')
-
-
-# @app.route('/edit' , methods=['GET' , 'POST'])
-# def edit():
-# 	if request.methods == 'GET' :
-# 		a = query_all()
-# 		return render_template('edit.html' , res = a)
-	
 	
 
 if __name__ == '__main__':
