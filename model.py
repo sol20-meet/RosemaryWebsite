@@ -5,7 +5,6 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 class Reservation(Base):
-	__tablename__ ="Reservations"
 	id = Column(Integer,primary_key=True)
 	reserve_name = Column(String)
 	full_name = Column(String)
@@ -45,3 +44,20 @@ class Reservation(Base):
 				self.closed_menu,
 				self.notes)
 			
+
+
+def add_res(reserve_name,full_name,reserve_time,reserve_day,num_people,location,phone_num,waiter_name,is_coming,is_food,closed_menu,notes):
+	reserve_obj = Reservation(
+		reserve_name = reserve_name,
+		full_name = full_name,
+		reserve_time=reserve_time,
+		reserve_day = reserve_day,
+		num_people = num_people,
+		location = location,
+		phone_num = phone_num,
+		waiter_name = waiter_name,
+		is_coming = is_coming,
+		is_food = is_food,
+		closed_menu = closed_menu,
+		notes = notes)
+	return reserve_obj
