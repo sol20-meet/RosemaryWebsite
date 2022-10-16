@@ -41,7 +41,7 @@
 	</head>
 	<body>
 		<!-- -------------------------------------------BODY-BELOW--------------------------------------------------------------------->
-		<a href="/"><div><img class="arrow_back" src="static/images/arrow_back.png"></div></a>
+		<a href="/home"><div><img class="arrow_back" src="static/images/arrow_back.png"></div></a>
 		<center>
 		<img class="logo_upload" src="static/images/logorosemary4.png">
 		</center>
@@ -63,19 +63,19 @@
 				<th>Options</th>
 			</tr>
 			<tr>
-				<td>{{Reservation['reserve_name']}}</td>
-				<td>{{Reservation['full_name']}}</td>
-				<td>{{Reservation['reserve_time']}}</td>
-				<td>{{Reservation['reserve_day']}}</td>
-				<td>{{Reservation['num_people']}}</td>
+				<td>{{Reservation['reserveName']}}</td>
+				<td>{{Reservation['fullName']}}</td>
+				<td>{{Reservation['reserveTime']}}</td>
+				<td>{{Reservation['reserveDay']}}</td>
+				<td>{{Reservation['numOfpeople']}}</td>
 				<td>{{Reservation['location']}}</td>
 				<td>{{Reservation['phone_num']}}</td>
-				<td>{{Reservation['waiter_name']}}</td>
-				<td>{{Reservation['is_food']}}</td>
-				<td>{{Reservation['closed_menu']}}</td>
-				<td><input type="checkbox" id="isComingBox" name="{{Reservation['id']}}" value="{{Reservation['id']}}"> <label for="isComingBox">Coming?</label></td>
+				<td>{{Reservation['waiterName']}}</td>
+				<td>{{Reservation['isEating']}}</td>
+				<td>{{Reservation['closedMenu']}}</td>
+				<td><input type="checkbox" id="isComingBox" name="{{Reservation['phone_num']}}" value="{{Reservation['phone_num']}}"> <label for="isComingBox">Coming?</label></td>
 				<td class="notesTh">{{Reservation['notes']}}</td>
-				<td><form method="post"><button id="btndlt" value="{{Reservation.id}}" class="button-6" name="deleteBtn" type="submit"></form><p class="btnTxt">Delete</p></button>
+				<td><form method="post"><button id="btndlt" value="{{Reservation.phone_num}}" class="button-6" name="deleteBtn" type="submit"></form><p class="btnTxt">Delete</p></button>
 				<!-- 				<a href="/edit"><button id="btnedit" class="button-6" name="editBtn" type="submit"><p class="btnTxt">Edit</p></button></a></td>
 			-->			</tr>
 			{%endfor%}

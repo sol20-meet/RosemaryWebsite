@@ -1,13 +1,3 @@
-from model import *
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-engine = create_engine('sqlite:///database.db?check_same_thread=False')
-Base.metadata.create_all(engine)
-# session = scoped_session(sessionmaker(bind=engine))
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
-
 #add_place takes 4 variables and it creates an Place Object and then it adds it to the database so it can be accessed later on..
 def add_res(reserve_name,full_name,reserve_time,reserve_day,num_people,location,phone_num,waiter_name,is_coming,is_food,closed_menu,notes):
 	reserve_obj = Reservation(

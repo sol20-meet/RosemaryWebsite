@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<!--
+	Epilogue by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Rosemary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/jpg" href="{{url_for('static', filename='images/r.png')}}">
+		<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
+		<style>
+			.loginbox{width: 200px;}
+			form {color :#000000 !important;
+			font-size: 30px !important;
+			font-weight: 600 !important;}
+
+			* {color :#000000 !important;
+			font-size: 30px !important;
+			font-weight: 600 !important;}
+			
+		</style>
+		
+	</head>
+	<body>
+		<center>
+		<div>
+			<form action="" method="POST" name="makePlace">
+				User
+				<input class="loginbox" type="text" name="user" required minlength="1">
+				<br>
+				Password
+				<input class="loginbox" type="password" name="passw">
+				<br>
+				<input type="Submit" name="Submit" class="button big">
+			</form>
+		</div>
+		</center>
+		<center>
+		<footer id="footer">
+		</footer>
+		</center>
+		
+		<!-- Scripts -->
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/skel.min.js"></script>
+		<script src="static/js/util.js"></script>
+		<script src="static/js/main.js"></script>
+	</body>
+</html>
